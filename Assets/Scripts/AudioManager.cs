@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -21,7 +22,13 @@ public class AudioManager : MonoBehaviour
     public void PlayCrash()
     {
         source.Play();
-       
-        
+        StartCoroutine(WaitForSoundFinish());
+            
+    }
+
+    IEnumerator WaitForSoundFinish()
+    {
+       yield return new WaitForSeconds(crashSound.length);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

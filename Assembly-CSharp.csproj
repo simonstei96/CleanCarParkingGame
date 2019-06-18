@@ -64,10 +64,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\CarControl.cs" />
-    <Compile Include="Assets\Scripts\Crash.cs" />
+    <Compile Include="Assets\Scripts\CollisionHandling.cs" />
     <Compile Include="Assets\Scripts\LevelClass.cs" />
     <Compile Include="Assets\Scripts\MainMenuScript.cs" />
-    <Compile Include="Assets\Scripts\ParkingSpotDetection.cs" />
     <None Include="Assets\Texture\Parking pack\Spritesheets\Cars.xml" />
     <None Include="Assets\Texture\Parking pack\license.txt" />
     <None Include="Assets\Texture\Parking pack\Spritesheets\Other.xml" />

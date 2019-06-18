@@ -95,17 +95,19 @@ public class CarControl : MonoBehaviour
 
     }
 
+    //Controls (left)
     public void Vorwaerts()
     {
         drive = true;
      
     }
 
+    //Controls(right)
     public void Rueckwaerts()
     {
         reverse = true;
     }
-
+    //Controls(no input)
     public void StopCar()
     {
         drive = false;
