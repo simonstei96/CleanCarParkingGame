@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class CollisionHandling : MonoBehaviour
 {
     public AudioManager audioManager;
+    public CarControl control;
     private int detectors;
     // Start is called before the first frame update
     void Start()
     {
-       // audioManager = GetComponent<AudioManager>();
+        control =  GameObject.Find("MainCar").GetComponent<CarControl>();
         if (audioManager == null)
             Debug.Log("DBG: audioManager is null");
     }
@@ -27,13 +28,16 @@ public class CollisionHandling : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("DBG: TriggerEnter");
+    { 
+        Debug.Log("DBG: TriggerEnter "+collision.name);
         //Ueberpruefung, ob es sich um den Zielparkplatz handelt
         if (collision.name.Equals("ParkingBox"))
             detectors++;
-        if(!collision.name.Equals("OuterCollisionRectangle"))
-            crashHappened();
+        else
+        {
+            if (!collision.name.Equals("OuterCollisionRectangle"))
+                crashHappened();
+        }
 
     }
 
@@ -48,6 +52,8 @@ public class CollisionHandling : MonoBehaviour
     private void crashHappened()
     {
         Debug.Log("DBG: crashHappened()");
+        //Stop car
+        control.SetCrashed(true);
         //Play Sound
         audioManager.PlayCrash();
         

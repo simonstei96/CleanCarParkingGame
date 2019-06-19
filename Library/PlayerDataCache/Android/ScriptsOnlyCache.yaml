@@ -62,11 +62,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9382}
     - Class: 114
-      Script: {instanceID: 10202}
+      Script: {instanceID: 9798}
     - Class: 114
-      Script: {instanceID: 10532}
+      Script: {instanceID: 10200}
     - Class: 114
-      Script: {instanceID: 13248}
+      Script: {instanceID: 10530}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -572,6 +572,12 @@ ScriptsOnlyBuild:
     className: ControlTrack
   - hash:
       serializedVersion: 2
+      Hash: ad20fd2929da322e61d5755e0f2d3e37
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CollisionHandling
+  - hash:
+      serializedVersion: 2
       Hash: b3ab2106268377ffe25dd18ac23dca28
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -738,12 +744,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: b2a9ef4bc0589aec4377eff6288259cc
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: CollisionHandling
   platform: 13
   scenePathNames:
   - Assets/Scenes/Levels/Level_1.unity

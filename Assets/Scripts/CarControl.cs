@@ -15,6 +15,7 @@ public class CarControl : MonoBehaviour
     public float rot = 0;
     private bool drive = false;
     private bool reverse = false;
+    private bool crash = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,12 @@ public class CarControl : MonoBehaviour
     }
     void FixedUpdate()
     {
+        //If car has crashed, do not move
+        if (crash)
+        {
+            car.velocity = new Vector2(0, 0);
+            return;
+        }
         //Accelerometer Input
         Vector3 accMeter = Input.acceleration;
         // Get input
@@ -63,10 +70,10 @@ public class CarControl : MonoBehaviour
         if (velo > maxSpeed || velo < -maxSpeed)
             velo = maxSpeed * Mathf.Sign(velo);
 
+        
         //Apply Force to Move rigidbody
         Vector2 moveDir = car.GetRelativeVector(Vector2.right) * velo;
 
-        Debug.Log("OUTPUT:  velo: "+velo);
         //Rotationszeug
         if (velo > 8 || velo < -8)
         {
@@ -112,6 +119,11 @@ public class CarControl : MonoBehaviour
     {
         drive = false;
         reverse = false;
+    }
+
+    public void SetCrashed(bool state)
+    {
+        crash = state;
     }
 
     //Helperfkt
