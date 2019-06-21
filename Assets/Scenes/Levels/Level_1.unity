@@ -3306,5 +3306,10 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[12].x
       value: 3.865872
       objectReference: {fileID: 0}
+    - target: {fileID: 8431396134025751149, guid: a01511b737653314bbd8a8d12b4b1801,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a01511b737653314bbd8a8d12b4b1801, type: 3}

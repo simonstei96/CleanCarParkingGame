@@ -15,7 +15,7 @@ public class MainMenuScript : MonoBehaviour
     {
         //Open Scene
         Debug.Log("START GAME");
-        //SceneManager.LoadScene(levels[0].getName());
+        SceneManager.LoadScene(levelSelector.value);
     }
 
     //Open Leveleditor
@@ -36,7 +36,7 @@ public class MainMenuScript : MonoBehaviour
         //Create new items and add
         for(int i = 0; i <= 10; ++i)
         {
-            LevelClass tmp = new LevelClass("Level " + i);
+            LevelClass tmp = new LevelClass(i);
             levels.Add(tmp);
             levelSelector.options.Add((Dropdown.OptionData)tmp);
         }

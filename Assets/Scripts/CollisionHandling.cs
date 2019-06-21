@@ -29,7 +29,7 @@ public class CollisionHandling : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     { 
-        Debug.Log("DBG: TriggerEnter "+collision.name);
+        //Debug.Log("DBG: TriggerEnter "+collision.name);
         //Ueberpruefung, ob es sich um den Zielparkplatz handelt
         if (collision.name.Equals("ParkingBox"))
             detectors++;
@@ -51,13 +51,13 @@ public class CollisionHandling : MonoBehaviour
 
     private void crashHappened()
     {
-        Debug.Log("DBG: crashHappened()");
+       // Debug.Log("DBG: crashHappened()");
         //Stop car
-        control.SetCrashed(true);
+       // control.SetCrashed(true);
         //Play Sound
-        audioManager.PlayCrash();
+        //audioManager.PlayCrash();
         
-        Debug.Log("DBG: Has waited for some seconds");
+       // Debug.Log("DBG: Has waited for some seconds");
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

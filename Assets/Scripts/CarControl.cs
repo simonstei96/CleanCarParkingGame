@@ -10,6 +10,7 @@ public class CarControl : MonoBehaviour
     public float velo=0;
 
     public float maxSpeed = 50f;
+    public float maxAngle = 33.5f;
     public float currentX = 0;
     public float currentY = 0;
     public float rot = 0;
@@ -29,37 +30,21 @@ public class CarControl : MonoBehaviour
             car.velocity = new Vector2(0, 0);
             return;
         }
+
         //Accelerometer Input
         Vector3 accMeter = Input.acceleration;
         // Get input
-      //  float h = -Input.GetAxis("Horizontal");
-     //   float v = Input.GetAxis("Vertical");
         float h = -Mathf.Clamp(accMeter.x, -1, 1);
-        float v = -Mathf.Clamp(accMeter.z, -1 , 1);
-
-       
+      //  float v = -Mathf.Clamp(accMeter.z, -1 , 1);
 
         h = roundHelper(h);
-        v = roundHelper(v);
-      //  Vector2 dir = new Vector2(v, h);
+      
 
         //Debugging
         currentX = car.velocity.x;
         currentY = car.velocity.y;
-        rot = car.rotation;
+        //rot = car.rotation;
 
-/*
-        //Accelerate
-        //Ausgleich ,da es schwierig ist, Tablet auf 0 Balance zu halten
-        if (v >= 0.1f || v <= -0.1f)
-            velo += acceleration * v*2 *Time.deltaTime;
-        //Clamp Max Speed
-        if (velo > maxSpeed || velo < -maxSpeed)
-            velo = maxSpeed * Mathf.Sign(velo);
-        //Decelerate
-        if (v < 0.1f && v > -0.1f)
-            velo = 0;
-            */
 
         if(drive)
             velo += acceleration * Time.deltaTime;
@@ -70,33 +55,43 @@ public class CarControl : MonoBehaviour
         if (velo > maxSpeed || velo < -maxSpeed)
             velo = maxSpeed * Mathf.Sign(velo);
 
-        
-        //Apply Force to Move rigidbody
-        Vector2 moveDir = car.GetRelativeVector(Vector2.right) * velo;
+
+
 
         //Rotationszeug
-        if (velo > 8 || velo < -8)
+        if (velo > 40 || velo < -40)
         {
-            //Aenderung klein halten am Anfang
-            if (velo > 0)
-                car.MoveRotation(car.rotation + (h));
+            rot = maxAngle * h * Time.deltaTime;
+        }
+        else {
+            if (velo > 8 || velo < -8)
+            {
+                rot = (maxAngle/2f) * h * Time.deltaTime;
+            }
             else
-                car.MoveRotation(car.rotation - (h));
-
+            {
+                rot = 0;
+            }
+        }
+       
+        //Max Lenkeinstellung einhalten
+        //  if (rot > maxAngle || rot < -maxAngle)
+        //     rot = maxAngle * Mathf.Sign(rot);
+        //Rotation anwenden
+        Debug.Log("DBG: velo/rot value: " + velo+":-: "+rot);
+        if (velo > 8)
+        {
+            car.MoveRotation(car.rotation + rot );
         }
         else
         {
-            if (velo > 2 || velo < -2)
-            {
-                //Aenderung klein halten am Anfang
-                if (velo > 0)
-                    car.MoveRotation(car.rotation + (h/8));
-                else
-                    car.MoveRotation(car.rotation - (h/8));
-
-            }
+            if (velo < -8)
+                car.MoveRotation(car.rotation - rot);
         }
+        
 
+        //Apply Force to Move rigidbody
+        Vector2 moveDir = car.GetRelativeVector(Vector2.right) * velo;
         car.AddForce(moveDir);
         
 

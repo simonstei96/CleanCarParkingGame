@@ -4,16 +4,16 @@ using UnityEngine.UI;
 public class LevelClass: Dropdown.OptionData
 {
     //Level name to be displayed
-    private string name;
+    private int idx;
 
     //Constructor with base call in Dropdown.OptionsData
-    public LevelClass(string s): base(s)
+    public LevelClass(int i) : base(i.ToString())
     {     
-        this.name = s;
+        this.idx = i;
     }
 
-    public string getName()
+    public int getNumber()
     {
-        return name;
+        return idx;
     }
 }
