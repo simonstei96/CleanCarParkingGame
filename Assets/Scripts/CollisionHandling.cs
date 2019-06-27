@@ -53,12 +53,12 @@ public class CollisionHandling : MonoBehaviour
     {
        // Debug.Log("DBG: crashHappened()");
         //Stop car
-       // control.SetCrashed(true);
+        control.SetCrashed(true);
         //Play Sound
         //audioManager.PlayCrash();
         
        // Debug.Log("DBG: Has waited for some seconds");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
 

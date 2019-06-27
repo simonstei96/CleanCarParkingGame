@@ -5,8 +5,6 @@ ScriptsOnlyBuild:
     - CarControl
     - CollisionHandling
     - MainMenuScript
-    UnityEditor.TestRunner.dll:
-    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.EventTrigger

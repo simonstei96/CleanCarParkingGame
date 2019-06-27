@@ -6,7 +6,7 @@ public class CarControl : MonoBehaviour
 {
     
     public Rigidbody2D car;
-    public float acceleration=10f;
+    public float acceleration=25f;
     public float velo=0;
 
     public float maxSpeed = 50f;
@@ -50,42 +50,44 @@ public class CarControl : MonoBehaviour
             velo += acceleration * Time.deltaTime;
         if(reverse)
             velo -= acceleration * Time.deltaTime;
-        if (!drive && !reverse)
+        if (!drive && !reverse) //verlangsamen als direkt 0
             velo = 0;
         if (velo > maxSpeed || velo < -maxSpeed)
             velo = maxSpeed * Mathf.Sign(velo);
 
 
+        
 
-
+        rot = Mathf.Sign(velo)* velo*1.5f * h*Time.deltaTime;
+        if (rot > maxAngle)
+            rot = maxAngle * Mathf.Sign(rot);
         //Rotationszeug
-        if (velo > 40 || velo < -40)
+       /* if (velo > 40 || velo < -40)
         {
             rot = maxAngle * h * Time.deltaTime;
         }
         else {
-            if (velo > 8 || velo < -8)
+            if (velo > 6 || velo < -6)
             {
-                rot = (maxAngle/2f) * h * Time.deltaTime;
+                rot = Mathf.Pow(velo,2) * h * Time.deltaTime;
             }
             else
             {
                 rot = 0;
             }
-        }
+        }*/
        
         //Max Lenkeinstellung einhalten
         //  if (rot > maxAngle || rot < -maxAngle)
         //     rot = maxAngle * Mathf.Sign(rot);
         //Rotation anwenden
-        Debug.Log("DBG: velo/rot value: " + velo+":-: "+rot);
-        if (velo > 8)
+        if (velo > 6)
         {
             car.MoveRotation(car.rotation + rot );
         }
         else
         {
-            if (velo < -8)
+            if (velo < -6)
                 car.MoveRotation(car.rotation - rot);
         }
         
@@ -93,8 +95,8 @@ public class CarControl : MonoBehaviour
         //Apply Force to Move rigidbody
         Vector2 moveDir = car.GetRelativeVector(Vector2.right) * velo;
         car.AddForce(moveDir);
-        
 
+      
     }
 
     //Controls (left)
