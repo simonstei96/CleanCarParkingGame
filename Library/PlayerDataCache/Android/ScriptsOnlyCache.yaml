@@ -5,6 +5,8 @@ ScriptsOnlyBuild:
     - CarControl
     - CollisionHandling
     - MainMenuScript
+    UnityEditor.TestRunner.dll:
+    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.EventTrigger
@@ -738,7 +740,7 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: 457256299afe42e0204c64f73ba13672
+      Hash: 371f9f471f21ad9aa363d463f50bf98c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CarControl

@@ -34,7 +34,7 @@ public class MainMenuScript : MonoBehaviour
         levels = new List<LevelClass>();
 
         //Create new items and add
-        for(int i = 1; i <= 10; ++i)
+        for(int i = 1; i <= 3; ++i)
         {
             LevelClass tmp = new LevelClass(i);
             levels.Add(tmp);

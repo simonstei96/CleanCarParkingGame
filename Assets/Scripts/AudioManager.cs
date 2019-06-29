@@ -28,7 +28,7 @@ public class AudioManager : MonoBehaviour
 
     IEnumerator WaitForSoundFinish()
     {
-       yield return new WaitForSeconds(crashSound.length);
+        yield return new WaitForSeconds(crashSound.length);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

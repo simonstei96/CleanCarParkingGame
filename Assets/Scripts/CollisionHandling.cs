@@ -28,15 +28,16 @@ public class CollisionHandling : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    { 
+    {
         //Debug.Log("DBG: TriggerEnter "+collision.name);
         //Ueberpruefung, ob es sich um den Zielparkplatz handelt
-        if (collision.name.Equals("ParkingBox"))
+        if (collision.name.Equals("ParkingBox")) {
             detectors++;
-        else
-        {
+        }
+        else {
+            Debug.Log("DBG: " + collision.name);
             if (!collision.name.Equals("OuterCollisionRectangle"))
-                crashHappened();
+                CrashHappened();
         }
 
     }
@@ -46,19 +47,17 @@ public class CollisionHandling : MonoBehaviour
         if (collision.name.Equals("ParkingBox"))
             detectors--;
         if (collision.name.Equals("OuterCollisionRectangle"))
-            crashHappened();
+            CrashHappened();
     }
 
-    private void crashHappened()
+    private void CrashHappened()
     {
-       // Debug.Log("DBG: crashHappened()");
+        Debug.Log("DBG: crashHappened");
         //Stop car
         control.SetCrashed(true);
         //Play Sound
-        //audioManager.PlayCrash();
+        audioManager.PlayCrash();
         
-       // Debug.Log("DBG: Has waited for some seconds");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
 
