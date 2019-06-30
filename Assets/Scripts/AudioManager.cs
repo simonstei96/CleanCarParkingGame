@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class AudioManager : MonoBehaviour
 {
     public AudioClip crashSound;
+    public AudioClip successSound;
     public AudioSource source;
     // Start is called before the first frame update
     void Start()
     {
-        source.clip = crashSound;
+       
     }
 
     // Update is called once per frame
@@ -21,14 +22,21 @@ public class AudioManager : MonoBehaviour
 
     public void PlayCrash()
     {
+        source.clip = crashSound;
         source.Play();
-        StartCoroutine(WaitForSoundFinish());
+        StartCoroutine(WaitForSoundFinish(crashSound.length));
             
     }
 
-    IEnumerator WaitForSoundFinish()
+    public void PlaySuccess() {
+        source.clip = successSound;
+        source.Play();
+        StartCoroutine(WaitForSoundFinish(successSound.length));
+    }
+
+    IEnumerator WaitForSoundFinish(float length)
     {
-        yield return new WaitForSeconds(crashSound.length);
+        yield return new WaitForSeconds(length);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

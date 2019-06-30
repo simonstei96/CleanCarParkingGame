@@ -19,11 +19,13 @@ public class CollisionHandling : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("DBG: numDetec= " + detectors);
         //Ueberpruefen, ob Fahrzeug so viel wie moeglich sich im Parkplatz befindet
         if (detectors == 4)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            detectors = 0; //Mybe delete that
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            audioManager.PlaySuccess();
+            
         }
     }
 
@@ -44,6 +46,7 @@ public class CollisionHandling : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        //Sollte Zielparkplatz teilweise verlassen werden
         if (collision.name.Equals("ParkingBox"))
             detectors--;
         if (collision.name.Equals("OuterCollisionRectangle"))
