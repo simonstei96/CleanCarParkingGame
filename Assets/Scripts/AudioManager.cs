@@ -7,11 +7,12 @@ public class AudioManager : MonoBehaviour
 {
     public AudioClip crashSound;
     public AudioClip successSound;
+    public AudioClip idleSound;
     public AudioSource source;
     // Start is called before the first frame update
     void Start()
     {
-       
+        
     }
 
     // Update is called once per frame
@@ -22,24 +23,38 @@ public class AudioManager : MonoBehaviour
 
     public void PlayCrash()
     {
+        source.loop = false;
         source.clip = crashSound;
         source.PlayOneShot(source.clip);
-        StartCoroutine(WaitForSoundFinish(crashSound.length, true));
-            
+        StartCoroutine(WaitForSoundFinish(crashSound.length, true));           
     }
 
     public void PlaySuccess() {
+        source.loop = false;
         source.clip = successSound;
         source.PlayOneShot(source.clip);
         StartCoroutine(WaitForSoundFinish(successSound.length, false));
+      
+    }
+
+    public void PlayIdle() {
+        if (!source.isPlaying) {
+            source.volume = 0.25f;
+            source.clip = idleSound;
+            source.loop = true;
+            source.Play();
+        }
+    }
+
+    public void StopIdle() {
+        source.loop = false;
+        source.Stop();
     }
 
     IEnumerator WaitForSoundFinish(float length, bool fail)
     {
         yield return new WaitForSeconds(length);
-        if(fail)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        else
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        Util.LoadLevel(fail);
+        
     }
 }

@@ -14,16 +14,24 @@ public class MainMenuScript : MonoBehaviour
    public void StartGame()
     {
         //Open Scene
-        Debug.Log("START GAME");
-        SceneManager.LoadScene(levels[levelSelector.value].getNumber());
+        int idx = levels[levelSelector.value].getNumber();
+        Data.data.startLevel = idx;
+        //SceneManager.LoadScene(3 + idx);
+        Util.LoadLevel(idx);
     }
 
-    //Open Leveleditor
-    public void StartEditor()
+    //Open Story
+    public void OpenStory()
     {
         //Open Scene
-        Debug.Log("LEVEL EDITOR");
-        //SceneManager.LoadScene("lvlEditor");
+        //SceneManager.LoadScene("Story");
+        Util.LoadScene("Story");
+    }
+
+    public void OpenSettings() {
+        //Open Scene
+        //SceneManager.LoadScene("Settings");
+        Util.LoadScene("Settings");
     }
 
     void Start()
@@ -32,15 +40,17 @@ public class MainMenuScript : MonoBehaviour
         levelSelector.ClearOptions();
         //Create Level List
         levels = new List<LevelClass>();
-
+        Data.data.level = 4;
         //Create new items and add
-        for(int i = 1; i <= 3; ++i)
+        for(int i = 1; i <= 4; ++i)
         {
             LevelClass tmp = new LevelClass(i);
             levels.Add(tmp);
             levelSelector.options.Add((Dropdown.OptionData)tmp);
+           
         }
 
         
     }
+
 }

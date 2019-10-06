@@ -12,34 +12,11 @@ public class CollisionHandling : MonoBehaviour
     void Start()
     {
         control =  GameObject.Find("MainCar").GetComponent<CarControl>();
-        if (audioManager == null)
-            Debug.Log("DBG: audioManager is null");
-        //int num = PlayerPrefs.GetInt("Level:Score");
-        //Debug.Log("DBG: " + num);
+        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        int num = PlayerPrefs.GetInt("Level:Score");
-        Debug.Log("DBG: " + num);
-        //Ueberpruefen, ob Fahrzeug so viel wie moeglich sich im Parkplatz befindet
-        if (detectors == 4)
-        {
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            //audioManager.PlaySuccess();
-            
-        }
-    }
 
-    void Awake() {
-        if (!PlayerPrefs.HasKey("DefaultsSet")) {
-            PlayerPrefs.SetString("DefaultsSet", "True");
-            PlayerPrefs.SetInt("Level:Score", 0);
-   
 
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -54,9 +31,10 @@ public class CollisionHandling : MonoBehaviour
                 CrashHappened();
         }
         if (detectors == 4) {
+            Data.data.doneLevel++;
+            control.StopMovement(true);
             audioManager.PlaySuccess();
-            int num = PlayerPrefs.GetInt("Level:Score");
-            PlayerPrefs.SetInt("Level:Score",num++);
+          
         }
 
     }
@@ -72,9 +50,9 @@ public class CollisionHandling : MonoBehaviour
 
     private void CrashHappened()
     {
-        Debug.Log("DBG: crashHappened");
+    
         //Stop car
-        control.SetCrashed(true);
+        control.StopMovement(true);
         //Play Sound
         audioManager.PlayCrash();
         
