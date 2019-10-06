@@ -78,12 +78,13 @@ public class CarControl : MonoBehaviour
             }
         }
        
-
+        //Berechnung der Rotation
         rot = Mathf.Sign(velo)* velo*1.5f * h*Time.deltaTime;
+        //Max einhalten
         if (rot > maxAngle)
             rot = maxAngle * Mathf.Sign(rot);
  
-        //Rotation anwenden
+        //Rotation anwenden abhaengig von Geschwindigkeit
         if (velo > 5)
         {
             car.MoveRotation(car.rotation + rot );

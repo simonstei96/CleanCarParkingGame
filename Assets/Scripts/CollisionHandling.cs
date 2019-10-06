@@ -11,6 +11,7 @@ public class CollisionHandling : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Ref zu Auto
         control =  GameObject.Find("MainCar").GetComponent<CarControl>();
         
     }
@@ -31,6 +32,7 @@ public class CollisionHandling : MonoBehaviour
                 CrashHappened();
         }
         if (detectors == 4) {
+            //Zielparkplatz erreicht
             Data.data.doneLevel++;
             control.StopMovement(true);
             audioManager.PlaySuccess();

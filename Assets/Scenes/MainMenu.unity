@@ -1685,6 +1685,7 @@ MonoBehaviour:
   hardMode: 0
   level: 0
   doneLevel: 0
+  startLevel: 0
 --- !u!4 &1084309821
 Transform:
   m_ObjectHideFlags: 0

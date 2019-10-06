@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Data : MonoBehaviour
 {
+    //Objekt zum kontinuierlichen Speichern der Daten in einer Session
     public static Data data;
 
+    //Steuerung, Spielmodus, Levelinfo
     public bool invertedControls=true;
     public bool hardMode=false;
     public int level = 0;

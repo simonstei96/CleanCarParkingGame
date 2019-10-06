@@ -6,17 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
+    //Liste der Level, Basiert auf Leveleditorversuch
     List<LevelClass> levels;
     //List<Dropdown.OptionDataList> optionLevels;
-
+    //DropdownMenu
     public Dropdown levelSelector;
+
     //Start selected Level in Dropdown
    public void StartGame()
     {
-        //Open Scene
+        //Level starten und Info speichern
         int idx = levels[levelSelector.value].getNumber();
         Data.data.startLevel = idx;
-        //SceneManager.LoadScene(3 + idx);
         Util.LoadLevel(idx);
     }
 
@@ -24,13 +25,13 @@ public class MainMenuScript : MonoBehaviour
     public void OpenStory()
     {
         //Open Scene
-        //SceneManager.LoadScene("Story");
+        
         Util.LoadScene("Story");
     }
 
     public void OpenSettings() {
         //Open Scene
-        //SceneManager.LoadScene("Settings");
+        
         Util.LoadScene("Settings");
     }
 
@@ -40,6 +41,7 @@ public class MainMenuScript : MonoBehaviour
         levelSelector.ClearOptions();
         //Create Level List
         levels = new List<LevelClass>();
+        //Set Levelanzahl
         Data.data.level = 4;
         //Create new items and add
         for(int i = 1; i <= 4; ++i)

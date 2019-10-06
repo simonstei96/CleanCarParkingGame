@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
+    //Ref zu Audiodatteien
     public AudioClip crashSound;
     public AudioClip successSound;
     public AudioClip idleSound;
@@ -26,6 +27,7 @@ public class AudioManager : MonoBehaviour
         source.loop = false;
         source.clip = crashSound;
         source.PlayOneShot(source.clip);
+        //Warten bis der Sound zuende ist
         StartCoroutine(WaitForSoundFinish(crashSound.length, true));           
     }
 
@@ -33,11 +35,13 @@ public class AudioManager : MonoBehaviour
         source.loop = false;
         source.clip = successSound;
         source.PlayOneShot(source.clip);
+        //Warten bis der Sound zuende ist
         StartCoroutine(WaitForSoundFinish(successSound.length, false));
       
     }
 
     public void PlayIdle() {
+        //Audio Loopen und abspielen
         if (!source.isPlaying) {
             source.volume = 0.25f;
             source.clip = idleSound;

@@ -3150,26 +3150,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCar
       objectReference: {fileID: 0}
-    - target: {fileID: 8431396134025751150, guid: a01511b737653314bbd8a8d12b4b1801,
-        type: 3}
-      propertyPath: mang
-      value: 
-      objectReference: {fileID: 1237557357}
-    - target: {fileID: 8431396134025751150, guid: a01511b737653314bbd8a8d12b4b1801,
-        type: 3}
-      propertyPath: acceleration
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8431396134025751150, guid: a01511b737653314bbd8a8d12b4b1801,
-        type: 3}
-      propertyPath: car
-      value: 
-      objectReference: {fileID: 639314318}
-    - target: {fileID: 8431396134025751149, guid: a01511b737653314bbd8a8d12b4b1801,
-        type: 3}
-      propertyPath: m_LinearDrag
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8431396134025751145, guid: a01511b737653314bbd8a8d12b4b1801,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3379,6 +3359,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[12].x
       value: 3.865872
+      objectReference: {fileID: 0}
+    - target: {fileID: 8431396134025751150, guid: a01511b737653314bbd8a8d12b4b1801,
+        type: 3}
+      propertyPath: mang
+      value: 
+      objectReference: {fileID: 1237557357}
+    - target: {fileID: 8431396134025751150, guid: a01511b737653314bbd8a8d12b4b1801,
+        type: 3}
+      propertyPath: acceleration
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8431396134025751150, guid: a01511b737653314bbd8a8d12b4b1801,
+        type: 3}
+      propertyPath: car
+      value: 
+      objectReference: {fileID: 639314318}
+    - target: {fileID: 8431396134025751149, guid: a01511b737653314bbd8a8d12b4b1801,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a01511b737653314bbd8a8d12b4b1801, type: 3}

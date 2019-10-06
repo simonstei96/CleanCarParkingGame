@@ -1000,4 +1000,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Levels/Level_2.unity
   - Assets/Scenes/Levels/Level_3.unity
   - Assets/Scenes/Levels/Level_4.unity
-  playerPath: E:/Users/Simon/Documents/Hochschule/8. Semester/Medienprojekt/UnityStuff/CleanCarParking/APK/test2.apk
+  playerPath: E:/Users/Simon/Documents/Hochschule/8. Semester/Medienprojekt/UnityStuff/CleanCarParking/APK/CleanCarParking.apk
